@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可视化ping程序</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cardBg"></div>
+    <div class="router">
+        <span class="tag" id="confSpan">设置</span>
+        <span class="tag" id="pingSpan">PING</span>
+    </div>
+    <div class="card" id="confCard">
+        <div class="inputArea">
+            <input type="text" required id="routerIp">
+            <label>输入网关地址</label>
+            <button onclick="getRouterMac()">保存</button>
+        </div>
+    </div>
+    <div class="card" id="pingCard">
+        <div class="inputArea">
+            <input type="text" required id="dstIp">
+            <label>输入ip地址或域名</label>
+            <button onclick="sendIcmp()">PING</button>
+        </div>
+    </div>
+    <div class="pointer" id="pointPic">
+        <img src="imgs/pointer.png" alt="">
+    </div>
+    <div class="infoCard" id="infoCard">
+        <div class="front-card" id="frontCard">
+            <span id="localIp"></span>
+            <span id="localMac"></span>
+            <span id="routerMac"></span>
+        </div>
+        <div class="back-card" id="backCard">
+            <span id="pingIp"></span>
+            <span id="pingTime"></span>
+            <span id="pingTTL"></span>
+        </div>
+    </div>
+<div class="loader" id="loader">
+    <div class="loader-bar"></div>
+    <div class="loader-text">Loading. . .</div>
+</div>
+
+<div class="tips">
+    检查你填写的地址！
+</div>
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>

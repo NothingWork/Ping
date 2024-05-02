@@ -7,9 +7,7 @@ import com.ysu.ping.Service.PcapService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Yun
@@ -21,12 +19,11 @@ public class PcapController {
     @Autowired
     private PcapService pcapService;
     @Operation(summary = "获取路由Mac")
-    @GetMapping("/getRouterMac")
-    public Result getRouterMac(@RequestParam("dstIp") String dstIp,
-                               @RequestParam("srcIp") String srcIp,
-                               @RequestParam("srcMac") String srcMac
-                               ) {
-        return pcapService.getRouterMac(new ArpParam(dstIp,srcIp,srcMac));
+    @PostMapping("/getRouterMac")
+    @ResponseBody
+    public Result getRouterMac(@RequestBody ArpParam arpParam) {
+        System.out.println(arpParam.getSrcIp());
+        return pcapService.getRouterMac(arpParam);
     }
 
     @Operation(summary = "获取本机信息")
@@ -36,13 +33,11 @@ public class PcapController {
     }
 
     @Operation(summary = "ping")
-    @GetMapping("/pingIp")
+    @PostMapping("/pingIp")
+    @ResponseBody
     public Result pingIp(
-            @RequestParam("srcIp") String srcIp,
-            @RequestParam("srcMac") String srcMac,
-            @RequestParam("dstIp") String dstIp,
-            @RequestParam("dstMac") String dstMac
+            @RequestBody IcmpParam icmpParam
     ){
-        return pcapService.pingIp(new IcmpParam(srcIp,srcMac,dstIp,dstMac));
+        return pcapService.pingIp(icmpParam);
     }
 }

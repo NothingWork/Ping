@@ -6,13 +6,13 @@ package com.ysu.ping.Entity;
  */
 public class PingReply {
     private String ip;//响应的ip
-    private long time;//响应时间
-    private String ttL;//生存时间
+    private long pingTime;//响应时间
+    private String ttl;//生存时间
 
-    public PingReply(String ip, long time, String ttL) {
+    public PingReply(String ip, long pingTime, String ttl) {
         this.ip = ip;
-        this.time = time;
-        this.ttL = ttL;
+        this.pingTime = pingTime;
+        this.ttl = ttl;
     }
 
     public PingReply() {
@@ -27,19 +27,19 @@ public class PingReply {
         this.ip = ip;
     }
 
-    public long getTime() {
-        return time;
+    public long getPingTime() {
+        return pingTime;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setPingTime(long pingTime) {
+        this.pingTime = pingTime;
     }
 
-    public String getTtL() {
-        return ttL;
+    public String getTtl() {
+        return ttl;
     }
 
-    public void setTtL(String ttL) {
-        this.ttL = ttL;
+    public void setTtl(String ttl) {
+        this.ttl = ttl;
     }
 }

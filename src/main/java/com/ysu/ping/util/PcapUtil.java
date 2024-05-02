@@ -165,10 +165,10 @@ public class PcapUtil {
                 //6.获取抓包信息
                 if (packet != null) {
                     //7.提取想要的信息
-                    pingReply.setTime(System.currentTimeMillis() - time);
+                    pingReply.setPingTime(System.currentTimeMillis() - time);
                     IpV4Packet ipV4Packet = packet.get(IpV4Packet.class);
                     pingReply.setIp(String.valueOf(ipV4Packet.getHeader().getSrcAddr()));
-                    pingReply.setTtL(String.valueOf(ipV4Packet.getHeader().getTtl()));
+                    pingReply.setTtl(String.valueOf(ipV4Packet.getHeader().getTtl()));
                     break;
                 }
                 if(count>4){
