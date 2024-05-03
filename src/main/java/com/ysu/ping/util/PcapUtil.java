@@ -73,6 +73,7 @@ public class PcapUtil {
      */
     public String getRouterMac(ArpParam arpParam) {
         String routerMac = "";
+        int count = 1;//发包计数
         try {
             //1.获取网络接口
             InetAddress addr = InetAddress.getByName(arpParam.getSrcIp());// 源ip
@@ -93,6 +94,11 @@ public class PcapUtil {
                     routerMac = arpPacket.getHeader().getSrcHardwareAddr().toString();
                     break;
                 }
+                if(count>4){
+                    routerMac = null;
+                    break;//发包超过4次，视为超时
+                }
+                count++;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -146,7 +152,7 @@ public class PcapUtil {
     }
 
     public PingReply pingIp(IcmpParam icmpParam) {
-        int count = 1;//最大发包次数
+        int count = 1;//发包计数
         PingReply pingReply = new PingReply();
         try {
             //1.获取网络接口

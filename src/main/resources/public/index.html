@@ -10,15 +10,18 @@
 </head>
 
 <body>
+<div id="plane" class="plane">
+    <img src="imgs/plane.png" width="50px" height="50px">
+</div>
     <div class="cardBg"></div>
     <div class="router">
-        <span class="tag" id="confSpan">设置</span>
+        <span class="tag" id="confSpan">网关MAC</span>
         <span class="tag" id="pingSpan">PING</span>
     </div>
     <div class="card" id="confCard">
         <div class="inputArea">
             <input type="text" required id="routerIp">
-            <label>输入网关地址</label>
+            <label>输入默认网关地址</label>
             <button onclick="getRouterMac()">保存</button>
         </div>
     </div>
@@ -49,8 +52,7 @@
     <div class="loader-text">Loading. . .</div>
 </div>
 
-<div class="tips">
-    检查你填写的地址！
+<div class="tips" id="tips">
 </div>
 </body>
 <script type="text/javascript" src="script.js"></script>
